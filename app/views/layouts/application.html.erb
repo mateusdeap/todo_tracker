@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoTracker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="ui top borderless secondary pointing menu">
+      <div class="active green item">
+        <h1>TodoTracker</h1>
+      </div>
+    </div>  
+    <div class="ui container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
