@@ -2,20 +2,24 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: 123456
-  host: localhost
 
 development:
   <<: *default
-  database: todo_tracker_development
+  database: <%= Rails.application.credentials.dig(:development :database) %>
+  username: <%= Rails.application.credentials.dig(:development :username) %>
+  password: <%= Rails.application.credentials.dig(:development :password) %>
+  host: <%= Rails.application.credentials.dig(:development :host) %>
 
 test:
   <<: *default
-  database: todo_tracker_test
+  database: <%= Rails.application.credentials.dig(:test :database) %>
+  username: <%= Rails.application.credentials.dig(:test :username) %>
+  password: <%= Rails.application.credentials.dig(:test :password) %>
+  host: <%= Rails.application.credentials.dig(:test :host) %>
 
 production:
   <<: *default
-  database: todo_tracker_production
-  username: todo_tracker
-  password: <%= ENV['TODO_TRACKER_DATABASE_PASSWORD'] %>
+  database: <%= Rails.application.credentials.dig(:production :database) %>
+  username: <%= Rails.application.credentials.dig(:production :username) %>
+  password: <%= Rails.application.credentials.dig(:production :password) %>
+  host: <%= Rails.application.credentials.dig(:production :host) %>
